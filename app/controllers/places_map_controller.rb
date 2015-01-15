@@ -14,13 +14,12 @@ class PlacesMapController < UIViewController
   def viewDidLoad
     view.frame = tabBarController.view.bounds
     
-    #region = MKCoordinateRegionMake(CLLocationCoordinate2D.new(51.517026,  -0.109195), MKCoordinateSpanMake(1.5, 1.5))
     coords_for_first_place = $places.get_place(0).coordinate
-    region = MKCoordinateRegionMake(coords_for_first_place, MKCoordinateSpanMake(1, 1))
+    region = MKCoordinateRegionMake(coords_for_first_place, MKCoordinateSpanMake(0.5, 0.5))
 
     self.view.setRegion(region)
 
-    $places.get_places.each { |place| self.view.addAnnotation(place) }
+    $places.get_places.each { |place| self.view.addAnnotation(place) }    
   end
 
   def viewWillAppear(animated)

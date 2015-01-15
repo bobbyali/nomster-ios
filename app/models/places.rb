@@ -35,6 +35,11 @@ class Places
           new_place = Place.new(lat, long, name, address, description, id)          
           @places << new_place 
         end
+
+        vc = App.delegate.instance_variable_get("@window")
+        pmc = vc.rootViewController.viewControllers[0].viewControllers[0]
+        pmc.viewDidLoad
+
       else
         App.alert(response.error_message)
       end
